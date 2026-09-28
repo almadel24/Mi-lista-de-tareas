@@ -1,19 +1,13 @@
-import Dexie, { type Table } from 'dexie';
+import type { Task } from './interfaces/task';
 
-// Aquí definimos cómo se ve una tarea
-export interface Task {
-  id?: number;
-  text: string;
-  completed: boolean;
-}
+const KEY = 'tasks';
 
-// Aquí creamos la base de datos
-export class TaskDB extends Dexie {
-  tasks!: Table<Task>;
-  constructor() {
-    super('TaskDB');
-    this.version(1).stores({ tasks: '++id, text, completed' });
-  }
-}
-
-export const db = new TaskDB();
+export const db = {
+  getAll: (): Task[] => {
+    const saved = localStorage.getItem(KEY);
+    return saved ? JSON.parse(saved) : [];
+  },
+  save: (tasks: Task[]) => {
+    localStorage.setItem(KEY, JSON.stringify(tasks));
+  },
+};

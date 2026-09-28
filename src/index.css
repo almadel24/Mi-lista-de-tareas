@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * { box-sizing: border-box; }
 
 body {
-  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #ffe0ec 0%, #e0f4ff 100%);
   margin: 0;
   padding: 40px 20px;
